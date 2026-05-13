@@ -3,7 +3,7 @@ import streamlit as st
 from huggingface_hub import InferenceClient
 
 st.title("LLM Chat")
-st.write('minimal chatbot test')
+st.write('Minimal chatbot test using meta-llama/Llama-3.1-8B-Instruct (for free)')
 
 mymodel = "meta-llama/Llama-3.1-8B-Instruct"
 
