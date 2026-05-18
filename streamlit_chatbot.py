@@ -4,8 +4,6 @@ from huggingface_hub import InferenceClient
 import re
 import numpy as np
 
-load_dotenv()
-
 
 st.title("LLM Chat",
          help="""
