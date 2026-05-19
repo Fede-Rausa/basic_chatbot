@@ -108,7 +108,7 @@ else:
         st.session_state.old_model = mymodel
 
 
-max_tok = st.slider('max tokens', min_value = 1, max_value=2000, value=200, help='''maximum number of tokens the llm will generate to answer''')
+max_tok = st.slider('max tokens', min_value = 1, max_value=3000, value=300, help='''maximum number of tokens the llm will generate to answer''')
 temp_param = st.slider('temperature', min_value=0.0, max_value=1.5, step=0.01, value=0.1,
                         help='''The llm doesn\'t select the most likely token, but uses the token probabilities it has predicted
                         to sample the next token. The temperature is a parameter that controls how much words can be sampled.
