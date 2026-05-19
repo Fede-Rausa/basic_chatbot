@@ -107,6 +107,18 @@ else:
         st.session_state.messages = []
         st.session_state.old_model = mymodel
 
+
+max_tok = st.slider('max tokens', min_value = 1, max_value=2000, value=200, help='''maximum number of tokens the llm will generate to answer''')
+temp_param = st.slider('temperature', min_value=0.0, max_value=1.5, step=0.01, value=0.1,
+                        help='''The llm doesn\'t select the most likely token, but uses the token probabilities it has predicted
+                        to sample the next token. The temperature is a parameter that controls how much words can be sampled.
+                        The higher the temperature the higher the randomness and the creativity of the answer.
+                        A lower temperature makes the answers more deterministic and repeateble.
+                        A 0 temperature implies that the llm selects always the most likely token.
+                        A too high temperature often leads to nonsense answers.''')
+
+
+
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
@@ -127,7 +139,8 @@ if prompt := st.chat_input("Say something..."):
         response_stream = client.chat.completions.create(
             model=mymodel,
             messages=st.session_state.messages,
-            max_tokens=500,
+            max_tokens=max_tok,
+            temperature=temp_param,
             stream=True,  # 👈 enable streaming
         )
 
